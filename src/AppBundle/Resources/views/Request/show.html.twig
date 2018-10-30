@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}My Requests{% endblock %}
+{% block pageTitle %}My Requests{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th>
+                                Project
+                            </th>
+                            <th>
+                                Company
+                            </th>
+                            <th>
+                                Skills
+                            </th>
+                            <th class="text-right">
+                                Capacity
+                            </th>
+                            </thead>
+                            <tbody>
+                            {% for demande in demandes %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('showInternship', {'internship': demande.internship }) }}">
+                                        {{ demande.internship.description }} {# projet #}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {{ demande.internship.company.companyname }}{# company #}
+                                    </td>
+                                    <td>
+                                        {% for skill in demande.internship.skills %}{{ skill }}{#skills#}
+                                            {% if not loop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td class="text-center">
+                                         {# capacity #}
+                                    </td>
+                                    <td class="text-center">
+                                    </td>
+                                    </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

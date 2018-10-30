@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="card">
+    <div class="card-body">
+    <div class="table-responsive">
+    <table class="table">
+        {% for stage in stages %}
+            <tr>
+                <td>{{ stage.nomStage }}</td>
+                <td> {{ stage.dure }}</td>
+                <td></td>
+                <td> <img src="{{ asset('uploads/images/' ~ stage.image) }}" width="150" height="225"/> </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
